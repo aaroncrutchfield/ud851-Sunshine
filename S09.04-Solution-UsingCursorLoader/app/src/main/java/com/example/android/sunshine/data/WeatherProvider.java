@@ -87,7 +87,7 @@ public class WeatherProvider extends ContentProvider {
          */
 
         /* This URI is content://com.example.android.sunshine/weather/ */
-        matcher.addURI(authority, WeatherContract.PATH_WEATHER, CODE_WEATHER);
+        matcher.addURI(authority, WeatherContract.PATH_WEATHER, CODE_WEATHER);      //  creates a relationship between the path and it's relative match code
 
         /*
          * This URI would look something like content://com.example.android.sunshine/weather/1472214172
