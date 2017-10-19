@@ -19,6 +19,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ import android.widget.TextView;
 
 import com.example.android.sunshine.utilities.SunshineDateUtils;
 import com.example.android.sunshine.utilities.SunshineWeatherUtils;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * {@link ForecastAdapter} exposes a list of weather forecasts
@@ -102,15 +105,28 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
     @Override
     public ForecastAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
 
-//      TODO (12) If the view type of the layout is today, use today layout
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        int layoutId;
 
-//      TODO (13) If the view type of the layout is future day, use future day layout
+        switch (viewType) {
+//      DONE (12) If the view type of the layout is today, use today layout
+            case VIEWTYPE_TODAY_ID:
+                layoutId = R.layout.list_item_forecast_today;
+                break;
 
-//      TODO (14) Otherwise, throw an IllegalArgumentException
+//      DONE (13) If the view type of the layout is future day, use future day layout
+            case VIEWTYPE_FUTURE_ID:
+                layoutId = R.layout.forecast_list_item;
+                break;
 
-        View view = LayoutInflater
-                .from(mContext)
-                .inflate(R.layout.forecast_list_item, viewGroup, false);
+//      DONE (14) Otherwise, throw an IllegalArgumentException
+            default:
+                throw new IllegalArgumentException("Invalid ViewType");
+
+        }
+
+        View view = LayoutInflater.from(mContext).inflate(layoutId, viewGroup, false);
+        view.setFocusable(true);
 
         return new ForecastAdapterViewHolder(view);
     }
@@ -135,15 +151,23 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
         int weatherId = mCursor.getInt(MainActivity.INDEX_WEATHER_CONDITION_ID);
         int weatherImageId;
 
-//      TODO (15) If the view type of the layout is today, display a large icon
+        switch (getItemViewType(position)) {
+//      DONE (15) If the view type of the layout is today, display a large icon
+            case VIEWTYPE_TODAY_ID:
+                weatherImageId = SunshineWeatherUtils
+                        .getLargeArtResourceIdForWeatherCondition(weatherId);
+                break;
+            case VIEWTYPE_FUTURE_ID:
+//      DONE (16) If the view type of the layout is future day, display a small icon
+                weatherImageId = SunshineWeatherUtils
+                        .getSmallArtResourceIdForWeatherCondition(weatherId);
+                break;
 
-//      TODO (16) If the view type of the layout is future day, display a small icon
-
-//      TODO (17) Otherwise, throw an IllegalArgumentException
-
-        weatherImageId = SunshineWeatherUtils
-                .getSmallArtResourceIdForWeatherCondition(weatherId);
-
+            default:
+//      DONE (17) Otherwise, throw an IllegalArgumentException
+                throw new IllegalArgumentException("Invalid View Type");
+        }
+        Log.d(TAG, "onBindViewHolder.weatherImageId: " + weatherImageId);
         forecastAdapterViewHolder.iconView.setImageResource(weatherImageId);
 
         /****************
