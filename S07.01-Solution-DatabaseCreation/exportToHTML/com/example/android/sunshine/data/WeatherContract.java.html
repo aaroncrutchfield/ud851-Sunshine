@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>WeatherContract.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(204,120,50); }
+.s3 { color: rgb(98,151,85); font-style: italic; }
+.s4 { color: rgb(106,135,89); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+WeatherContract.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<a name="l1"><span class="ln">1    </span></a><span class="s0">/* 
+<a name="l2"><span class="ln">2    </span></a> * Copyright (C) 2016 The Android Open Source Project 
+<a name="l3"><span class="ln">3    </span></a> * 
+<a name="l4"><span class="ln">4    </span></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); 
+<a name="l5"><span class="ln">5    </span></a> * you may not use this file except in compliance with the License. 
+<a name="l6"><span class="ln">6    </span></a> * You may obtain a copy of the License at 
+<a name="l7"><span class="ln">7    </span></a> * 
+<a name="l8"><span class="ln">8    </span></a> *      http://www.apache.org/licenses/LICENSE-2.0 
+<a name="l9"><span class="ln">9    </span></a> * 
+<a name="l10"><span class="ln">10   </span></a> * Unless required by applicable law or agreed to in writing, software 
+<a name="l11"><span class="ln">11   </span></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS, 
+<a name="l12"><span class="ln">12   </span></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+<a name="l13"><span class="ln">13   </span></a> * See the License for the specific language governing permissions and 
+<a name="l14"><span class="ln">14   </span></a> * limitations under the License. 
+<a name="l15"><span class="ln">15   </span></a> */</span><span class="s1"> 
+<a name="l16"><span class="ln">16   </span></a></span><span class="s2">package </span><span class="s1">com.example.android.sunshine.data</span><span class="s2">;</span><span class="s1"> 
+<a name="l17"><span class="ln">17   </span></a> 
+<a name="l18"><span class="ln">18   </span></a></span><span class="s2">import </span><span class="s1">android.provider.BaseColumns</span><span class="s2">;</span><span class="s1"> 
+<a name="l19"><span class="ln">19   </span></a> 
+<a name="l20"><span class="ln">20   </span></a></span><span class="s3">/** 
+<a name="l21"><span class="ln">21   </span></a> * Defines table and column names for the weather database. This class is not necessary, but keeps 
+<a name="l22"><span class="ln">22   </span></a> * the code organized. 
+<a name="l23"><span class="ln">23   </span></a> */</span><span class="s1"> 
+<a name="l24"><span class="ln">24   </span></a></span><span class="s2">public class </span><span class="s1">WeatherContract { 
+<a name="l25"><span class="ln">25   </span></a> 
+<a name="l26"><span class="ln">26   </span></a></span><span class="s0">//  COMPLETED (1) Within WeatherContract, create a public static final class called WeatherEntry that implements BaseColumns</span><span class="s1"> 
+<a name="l27"><span class="ln">27   </span></a>    </span><span class="s0">/* Inner class that defines the table contents of the weather table */</span><span class="s1"> 
+<a name="l28"><span class="ln">28   </span></a>    </span><span class="s2">public static final class </span><span class="s1">WeatherEntry </span><span class="s2">implements </span><span class="s1">BaseColumns { 
+<a name="l29"><span class="ln">29   </span></a> 
+<a name="l30"><span class="ln">30   </span></a></span><span class="s0">//      Do steps 2 through 10 within the WeatherEntry class</span><span class="s1"> 
+<a name="l31"><span class="ln">31   </span></a> 
+<a name="l32"><span class="ln">32   </span></a></span><span class="s0">//      COMPLETED (2) Create a public static final String call TABLE_NAME with the value &quot;weather&quot;</span><span class="s1"> 
+<a name="l33"><span class="ln">33   </span></a> 
+<a name="l34"><span class="ln">34   </span></a>        </span><span class="s0">/* Used internally as the name of our weather table. */</span><span class="s1"> 
+<a name="l35"><span class="ln">35   </span></a>        </span><span class="s2">public static final </span><span class="s1">String TABLE_NAME = </span><span class="s4">&quot;weather&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l36"><span class="ln">36   </span></a> 
+<a name="l37"><span class="ln">37   </span></a></span><span class="s0">//      COMPLETED (3) Create a public static final String call COLUMN_DATE with the value &quot;date&quot;</span><span class="s1"> 
+<a name="l38"><span class="ln">38   </span></a>        </span><span class="s0">/* 
+<a name="l39"><span class="ln">39   </span></a>         * The date column will store the UTC date that correlates to the local date for which 
+<a name="l40"><span class="ln">40   </span></a>         * each particular weather row represents. For example, if you live in the Eastern 
+<a name="l41"><span class="ln">41   </span></a>         * Standard Time (EST) time zone and you load weather data at 9:00 PM on September 23, 2016, 
+<a name="l42"><span class="ln">42   </span></a>         * the UTC time stamp for that particular time would be 1474678800000 in milliseconds. 
+<a name="l43"><span class="ln">43   </span></a>         * However, due to time zone offsets, it would already be September 24th, 2016 in the GMT 
+<a name="l44"><span class="ln">44   </span></a>         * time zone when it is 9:00 PM on the 23rd in the EST time zone. In this example, the date 
+<a name="l45"><span class="ln">45   </span></a>         * column would hold the date representing September 23rd at midnight in GMT time. 
+<a name="l46"><span class="ln">46   </span></a>         * (1474588800000) 
+<a name="l47"><span class="ln">47   </span></a>         * 
+<a name="l48"><span class="ln">48   </span></a>         * The reason we store GMT time and not local time is because it is best practice to have a 
+<a name="l49"><span class="ln">49   </span></a>         * &quot;normalized&quot;, or standard when storing the date and adjust as necessary when 
+<a name="l50"><span class="ln">50   </span></a>         * displaying the date. Normalizing the date also allows us an easy way to convert to 
+<a name="l51"><span class="ln">51   </span></a>         * local time at midnight, as all we have to do is add a particular time zone's GMT 
+<a name="l52"><span class="ln">52   </span></a>         * offset to this date to get local time at midnight on the appropriate date. 
+<a name="l53"><span class="ln">53   </span></a>         */</span><span class="s1"> 
+<a name="l54"><span class="ln">54   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_DATE = </span><span class="s4">&quot;date&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l55"><span class="ln">55   </span></a> 
+<a name="l56"><span class="ln">56   </span></a></span><span class="s0">//      COMPLETED (4) Create a public static final String call COLUMN_WEATHER_ID with the value &quot;weather_id&quot;</span><span class="s1"> 
+<a name="l57"><span class="ln">57   </span></a>        </span><span class="s0">/* Weather ID as returned by API, used to identify the icon to be used */</span><span class="s1"> 
+<a name="l58"><span class="ln">58   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_WEATHER_ID = </span><span class="s4">&quot;weather_id&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l59"><span class="ln">59   </span></a> 
+<a name="l60"><span class="ln">60   </span></a></span><span class="s0">//      COMPLETED (5) Create a public static final String call COLUMN_MIN_TEMP with the value &quot;min&quot;</span><span class="s1"> 
+<a name="l61"><span class="ln">61   </span></a>        </span><span class="s0">/* Min and max temperatures in °C for the day (stored as floats in the database) */</span><span class="s1"> 
+<a name="l62"><span class="ln">62   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_MIN_TEMP = </span><span class="s4">&quot;min&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l63"><span class="ln">63   </span></a></span><span class="s0">//      COMPLETED (6) Create a public static final String call COLUMN_MAX_TEMP with the value &quot;max&quot;</span><span class="s1"> 
+<a name="l64"><span class="ln">64   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_MAX_TEMP = </span><span class="s4">&quot;max&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l65"><span class="ln">65   </span></a> 
+<a name="l66"><span class="ln">66   </span></a></span><span class="s0">//      COMPLETED (7) Create a public static final String call COLUMN_HUMIDITY with the value &quot;humidity&quot;</span><span class="s1"> 
+<a name="l67"><span class="ln">67   </span></a>        </span><span class="s0">/* Humidity is stored as a float representing percentage */</span><span class="s1"> 
+<a name="l68"><span class="ln">68   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_HUMIDITY = </span><span class="s4">&quot;humidity&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l69"><span class="ln">69   </span></a> 
+<a name="l70"><span class="ln">70   </span></a></span><span class="s0">//      COMPLETED (8) Create a public static final String call COLUMN_PRESSURE with the value &quot;pressure&quot;</span><span class="s1"> 
+<a name="l71"><span class="ln">71   </span></a>        </span><span class="s0">/* Pressure is stored as a float representing percentage */</span><span class="s1"> 
+<a name="l72"><span class="ln">72   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_PRESSURE = </span><span class="s4">&quot;pressure&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l73"><span class="ln">73   </span></a> 
+<a name="l74"><span class="ln">74   </span></a></span><span class="s0">//      COMPLETED (9) Create a public static final String call COLUMN_WIND_SPEED with the value &quot;wind&quot;</span><span class="s1"> 
+<a name="l75"><span class="ln">75   </span></a>        </span><span class="s0">/* Wind speed is stored as a float representing wind speed in mph */</span><span class="s1"> 
+<a name="l76"><span class="ln">76   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_WIND_SPEED = </span><span class="s4">&quot;wind&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l77"><span class="ln">77   </span></a> 
+<a name="l78"><span class="ln">78   </span></a></span><span class="s0">//      COMPLETED (10) Create a public static final String call COLUMN_DEGREES with the value &quot;degrees&quot;</span><span class="s1"> 
+<a name="l79"><span class="ln">79   </span></a>        </span><span class="s0">/* 
+<a name="l80"><span class="ln">80   </span></a>         * Degrees are meteorological degrees (e.g, 0 is north, 180 is south). 
+<a name="l81"><span class="ln">81   </span></a>         * Stored as floats in the database. 
+<a name="l82"><span class="ln">82   </span></a>         * 
+<a name="l83"><span class="ln">83   </span></a>         * Note: These degrees are not to be confused with temperature degrees of the weather. 
+<a name="l84"><span class="ln">84   </span></a>         */</span><span class="s1"> 
+<a name="l85"><span class="ln">85   </span></a>        </span><span class="s2">public static final </span><span class="s1">String COLUMN_DEGREES = </span><span class="s4">&quot;degrees&quot;</span><span class="s2">;</span><span class="s1"> 
+<a name="l86"><span class="ln">86   </span></a>    } 
+<a name="l87"><span class="ln">87   </span></a>}</span></pre>
+</body>
+</html>

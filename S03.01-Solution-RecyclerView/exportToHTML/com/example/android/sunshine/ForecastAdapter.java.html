@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>ForecastAdapter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #606366; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(128,128,128); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(204,120,50); }
+.s3 { color: rgb(98,151,85); font-style: italic; }
+.s4 { color: rgb(98,151,85); font-weight: bold; font-style: italic; }
+.s5 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+ForecastAdapter.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<a name="l1"><span class="ln">1    </span></a><span class="s0">/* 
+<a name="l2"><span class="ln">2    </span></a> * Copyright (C) 2016 The Android Open Source Project 
+<a name="l3"><span class="ln">3    </span></a> * 
+<a name="l4"><span class="ln">4    </span></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); 
+<a name="l5"><span class="ln">5    </span></a> * you may not use this file except in compliance with the License. 
+<a name="l6"><span class="ln">6    </span></a> * You may obtain a copy of the License at 
+<a name="l7"><span class="ln">7    </span></a> * 
+<a name="l8"><span class="ln">8    </span></a> *      http://www.apache.org/licenses/LICENSE-2.0 
+<a name="l9"><span class="ln">9    </span></a> * 
+<a name="l10"><span class="ln">10   </span></a> * Unless required by applicable law or agreed to in writing, software 
+<a name="l11"><span class="ln">11   </span></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS, 
+<a name="l12"><span class="ln">12   </span></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+<a name="l13"><span class="ln">13   </span></a> * See the License for the specific language governing permissions and 
+<a name="l14"><span class="ln">14   </span></a> * limitations under the License. 
+<a name="l15"><span class="ln">15   </span></a> */</span><span class="s1"> 
+<a name="l16"><span class="ln">16   </span></a></span><span class="s2">package </span><span class="s1">com.example.android.sunshine</span><span class="s2">;</span><span class="s1"> 
+<a name="l17"><span class="ln">17   </span></a> 
+<a name="l18"><span class="ln">18   </span></a></span><span class="s2">import </span><span class="s1">android.content.Context</span><span class="s2">;</span><span class="s1"> 
+<a name="l19"><span class="ln">19   </span></a></span><span class="s2">import </span><span class="s1">android.support.v7.widget.RecyclerView</span><span class="s2">;</span><span class="s1"> 
+<a name="l20"><span class="ln">20   </span></a></span><span class="s2">import </span><span class="s1">android.view.LayoutInflater</span><span class="s2">;</span><span class="s1"> 
+<a name="l21"><span class="ln">21   </span></a></span><span class="s2">import </span><span class="s1">android.view.View</span><span class="s2">;</span><span class="s1"> 
+<a name="l22"><span class="ln">22   </span></a></span><span class="s2">import </span><span class="s1">android.view.ViewGroup</span><span class="s2">;</span><span class="s1"> 
+<a name="l23"><span class="ln">23   </span></a></span><span class="s2">import </span><span class="s1">android.widget.TextView</span><span class="s2">;</span><span class="s1"> 
+<a name="l24"><span class="ln">24   </span></a> 
+<a name="l25"><span class="ln">25   </span></a></span><span class="s0">// COMPLETED (15) Add a class called ForecastAdapter</span><span class="s1"> 
+<a name="l26"><span class="ln">26   </span></a></span><span class="s0">// COMPLETED (22) Extend RecyclerView.Adapter&lt;ForecastAdapter.ForecastAdapterViewHolder&gt;</span><span class="s1"> 
+<a name="l27"><span class="ln">27   </span></a></span><span class="s3">/** 
+<a name="l28"><span class="ln">28   </span></a> * {</span><span class="s4">@link </span><span class="s3">ForecastAdapter} exposes a list of weather forecasts to a 
+<a name="l29"><span class="ln">29   </span></a> * {</span><span class="s4">@link </span><span class="s3">android.support.v7.widget.RecyclerView} 
+<a name="l30"><span class="ln">30   </span></a> */</span><span class="s1"> 
+<a name="l31"><span class="ln">31   </span></a></span><span class="s2">public class </span><span class="s1">ForecastAdapter </span><span class="s2">extends </span><span class="s1">RecyclerView.Adapter&lt;ForecastAdapter.ForecastAdapterViewHolder&gt; { 
+<a name="l32"><span class="ln">32   </span></a> 
+<a name="l33"><span class="ln">33   </span></a>    </span><span class="s0">// COMPLETED (23) Create a private string array called mWeatherData</span><span class="s1"> 
+<a name="l34"><span class="ln">34   </span></a>    </span><span class="s2">private </span><span class="s1">String[] mWeatherData</span><span class="s2">;</span><span class="s1"> 
+<a name="l35"><span class="ln">35   </span></a> 
+<a name="l36"><span class="ln">36   </span></a>    </span><span class="s0">// COMPLETED (47) Create the default constructor (we will pass in parameters in a later lesson)</span><span class="s1"> 
+<a name="l37"><span class="ln">37   </span></a>    </span><span class="s2">public </span><span class="s1">ForecastAdapter() { 
+<a name="l38"><span class="ln">38   </span></a> 
+<a name="l39"><span class="ln">39   </span></a>    } 
+<a name="l40"><span class="ln">40   </span></a> 
+<a name="l41"><span class="ln">41   </span></a>    </span><span class="s0">// COMPLETED (16) Create a class within ForecastAdapter called ForecastAdapterViewHolder</span><span class="s1"> 
+<a name="l42"><span class="ln">42   </span></a>    </span><span class="s0">// COMPLETED (17) Extend RecyclerView.ViewHolder</span><span class="s1"> 
+<a name="l43"><span class="ln">43   </span></a>    </span><span class="s3">/** 
+<a name="l44"><span class="ln">44   </span></a>     * Cache of the children views for a forecast list item. 
+<a name="l45"><span class="ln">45   </span></a>     */</span><span class="s1"> 
+<a name="l46"><span class="ln">46   </span></a>    </span><span class="s2">public class </span><span class="s1">ForecastAdapterViewHolder </span><span class="s2">extends </span><span class="s1">RecyclerView.ViewHolder { 
+<a name="l47"><span class="ln">47   </span></a> 
+<a name="l48"><span class="ln">48   </span></a>        </span><span class="s0">// Within ForecastAdapterViewHolder ///////////////////////////////////////////////////////</span><span class="s1"> 
+<a name="l49"><span class="ln">49   </span></a>        </span><span class="s0">// COMPLETED (18) Create a public final TextView variable called mWeatherTextView</span><span class="s1"> 
+<a name="l50"><span class="ln">50   </span></a>        </span><span class="s2">public final </span><span class="s1">TextView mWeatherTextView</span><span class="s2">;</span><span class="s1"> 
+<a name="l51"><span class="ln">51   </span></a> 
+<a name="l52"><span class="ln">52   </span></a>        </span><span class="s0">// COMPLETED (19) Create a constructor for this class that accepts a View as a parameter</span><span class="s1"> 
+<a name="l53"><span class="ln">53   </span></a>        </span><span class="s0">// COMPLETED (20) Call super(view)</span><span class="s1"> 
+<a name="l54"><span class="ln">54   </span></a>        </span><span class="s0">// COMPLETED (21) Using view.findViewById, get a reference to this layout's TextView and save it to mWeatherTextView</span><span class="s1"> 
+<a name="l55"><span class="ln">55   </span></a>        </span><span class="s2">public </span><span class="s1">ForecastAdapterViewHolder(View view) { 
+<a name="l56"><span class="ln">56   </span></a>            </span><span class="s2">super</span><span class="s1">(view)</span><span class="s2">;</span><span class="s1"> 
+<a name="l57"><span class="ln">57   </span></a>            mWeatherTextView = (TextView) view.findViewById(R.id.tv_weather_data)</span><span class="s2">;</span><span class="s1"> 
+<a name="l58"><span class="ln">58   </span></a>        } 
+<a name="l59"><span class="ln">59   </span></a>        </span><span class="s0">// Within ForecastAdapterViewHolder ///////////////////////////////////////////////////////</span><span class="s1"> 
+<a name="l60"><span class="ln">60   </span></a>    } 
+<a name="l61"><span class="ln">61   </span></a> 
+<a name="l62"><span class="ln">62   </span></a>    </span><span class="s0">// COMPLETED (24) Override onCreateViewHolder</span><span class="s1"> 
+<a name="l63"><span class="ln">63   </span></a>    </span><span class="s0">// COMPLETED (25) Within onCreateViewHolder, inflate the list item xml into a view</span><span class="s1"> 
+<a name="l64"><span class="ln">64   </span></a>    </span><span class="s0">// COMPLETED (26) Within onCreateViewHolder, return a new ForecastAdapterViewHolder with the above view passed in as a parameter</span><span class="s1"> 
+<a name="l65"><span class="ln">65   </span></a>    </span><span class="s3">/** 
+<a name="l66"><span class="ln">66   </span></a>     * This gets called when each new ViewHolder is created. This happens when the RecyclerView 
+<a name="l67"><span class="ln">67   </span></a>     * is laid out. Enough ViewHolders will be created to fill the screen and allow for scrolling. 
+<a name="l68"><span class="ln">68   </span></a>     * 
+<a name="l69"><span class="ln">69   </span></a>     * </span><span class="s4">@param </span><span class="s3">viewGroup The ViewGroup that these ViewHolders are contained within. 
+<a name="l70"><span class="ln">70   </span></a>     * </span><span class="s4">@param </span><span class="s3">viewType  If your RecyclerView has more than one type of item (which ours doesn't) you 
+<a name="l71"><span class="ln">71   </span></a>     *                  can use this viewType integer to provide a different layout. See 
+<a name="l72"><span class="ln">72   </span></a>     *                  {</span><span class="s4">@link </span><span class="s3">android.support.v7.widget.RecyclerView.Adapter#getItemViewType(int)} 
+<a name="l73"><span class="ln">73   </span></a>     *                  for more details. 
+<a name="l74"><span class="ln">74   </span></a>     * </span><span class="s4">@return </span><span class="s3">A new ForecastAdapterViewHolder that holds the View for each list item 
+<a name="l75"><span class="ln">75   </span></a>     */</span><span class="s1"> 
+<a name="l76"><span class="ln">76   </span></a>    @Override 
+<a name="l77"><span class="ln">77   </span></a>    </span><span class="s2">public </span><span class="s1">ForecastAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup</span><span class="s2">, int </span><span class="s1">viewType) { 
+<a name="l78"><span class="ln">78   </span></a>        Context context = viewGroup.getContext()</span><span class="s2">;</span><span class="s1"> 
+<a name="l79"><span class="ln">79   </span></a>        </span><span class="s2">int </span><span class="s1">layoutIdForListItem = R.layout.forecast_list_item</span><span class="s2">;</span><span class="s1"> 
+<a name="l80"><span class="ln">80   </span></a>        LayoutInflater inflater = LayoutInflater.from(context)</span><span class="s2">;</span><span class="s1"> 
+<a name="l81"><span class="ln">81   </span></a>        </span><span class="s2">boolean </span><span class="s1">shouldAttachToParentImmediately = </span><span class="s2">false;</span><span class="s1"> 
+<a name="l82"><span class="ln">82   </span></a> 
+<a name="l83"><span class="ln">83   </span></a>        View view = inflater.inflate(layoutIdForListItem</span><span class="s2">, </span><span class="s1">viewGroup</span><span class="s2">, </span><span class="s1">shouldAttachToParentImmediately)</span><span class="s2">;</span><span class="s1"> 
+<a name="l84"><span class="ln">84   </span></a>        </span><span class="s2">return new </span><span class="s1">ForecastAdapterViewHolder(view)</span><span class="s2">;</span><span class="s1"> 
+<a name="l85"><span class="ln">85   </span></a>    } 
+<a name="l86"><span class="ln">86   </span></a> 
+<a name="l87"><span class="ln">87   </span></a>    </span><span class="s0">// COMPLETED (27) Override onBindViewHolder</span><span class="s1"> 
+<a name="l88"><span class="ln">88   </span></a>    </span><span class="s0">// COMPLETED (28) Set the text of the TextView to the weather for this list item's position</span><span class="s1"> 
+<a name="l89"><span class="ln">89   </span></a>    </span><span class="s3">/** 
+<a name="l90"><span class="ln">90   </span></a>     * OnBindViewHolder is called by the RecyclerView to display the data at the specified 
+<a name="l91"><span class="ln">91   </span></a>     * position. In this method, we update the contents of the ViewHolder to display the weather 
+<a name="l92"><span class="ln">92   </span></a>     * details for this particular position, using the &quot;position&quot; argument that is conveniently 
+<a name="l93"><span class="ln">93   </span></a>     * passed into us. 
+<a name="l94"><span class="ln">94   </span></a>     * 
+<a name="l95"><span class="ln">95   </span></a>     * </span><span class="s4">@param </span><span class="s3">forecastAdapterViewHolder The ViewHolder which should be updated to represent the 
+<a name="l96"><span class="ln">96   </span></a>     *                                  contents of the item at the given position in the data set. 
+<a name="l97"><span class="ln">97   </span></a>     * </span><span class="s4">@param </span><span class="s3">position                  The position of the item within the adapter's data set. 
+<a name="l98"><span class="ln">98   </span></a>     */</span><span class="s1"> 
+<a name="l99"><span class="ln">99   </span></a>    @Override 
+<a name="l100"><span class="ln">100  </span></a>    </span><span class="s2">public void </span><span class="s1">onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder</span><span class="s2">, int </span><span class="s1">position) { 
+<a name="l101"><span class="ln">101  </span></a>        String weatherForThisDay = mWeatherData[position]</span><span class="s2">;</span><span class="s1"> 
+<a name="l102"><span class="ln">102  </span></a>        forecastAdapterViewHolder.mWeatherTextView.setText(weatherForThisDay)</span><span class="s2">;</span><span class="s1"> 
+<a name="l103"><span class="ln">103  </span></a>    } 
+<a name="l104"><span class="ln">104  </span></a> 
+<a name="l105"><span class="ln">105  </span></a>    </span><span class="s0">// COMPLETED (29) Override getItemCount</span><span class="s1"> 
+<a name="l106"><span class="ln">106  </span></a>    </span><span class="s0">// COMPLETED (30) Return 0 if mWeatherData is null, or the size of mWeatherData if it is not null</span><span class="s1"> 
+<a name="l107"><span class="ln">107  </span></a>    </span><span class="s3">/** 
+<a name="l108"><span class="ln">108  </span></a>     * This method simply returns the number of items to display. It is used behind the scenes 
+<a name="l109"><span class="ln">109  </span></a>     * to help layout our Views and for animations. 
+<a name="l110"><span class="ln">110  </span></a>     * 
+<a name="l111"><span class="ln">111  </span></a>     * </span><span class="s4">@return </span><span class="s3">The number of items available in our forecast 
+<a name="l112"><span class="ln">112  </span></a>     */</span><span class="s1"> 
+<a name="l113"><span class="ln">113  </span></a>    @Override 
+<a name="l114"><span class="ln">114  </span></a>    </span><span class="s2">public int </span><span class="s1">getItemCount() { 
+<a name="l115"><span class="ln">115  </span></a>        </span><span class="s2">if </span><span class="s1">(</span><span class="s2">null </span><span class="s1">== mWeatherData) </span><span class="s2">return </span><span class="s5">0</span><span class="s2">;</span><span class="s1"> 
+<a name="l116"><span class="ln">116  </span></a>        </span><span class="s2">return </span><span class="s1">mWeatherData.length</span><span class="s2">;</span><span class="s1"> 
+<a name="l117"><span class="ln">117  </span></a>    } 
+<a name="l118"><span class="ln">118  </span></a> 
+<a name="l119"><span class="ln">119  </span></a>    </span><span class="s0">// COMPLETED (31) Create a setWeatherData method that saves the weatherData to mWeatherData</span><span class="s1"> 
+<a name="l120"><span class="ln">120  </span></a>    </span><span class="s0">// COMPLETED (32) After you save mWeatherData, call notifyDataSetChanged</span><span class="s1"> 
+<a name="l121"><span class="ln">121  </span></a>    </span><span class="s3">/** 
+<a name="l122"><span class="ln">122  </span></a>     * This method is used to set the weather forecast on a ForecastAdapter if we've already 
+<a name="l123"><span class="ln">123  </span></a>     * created one. This is handy when we get new data from the web but don't want to create a 
+<a name="l124"><span class="ln">124  </span></a>     * new ForecastAdapter to display it. 
+<a name="l125"><span class="ln">125  </span></a>     * 
+<a name="l126"><span class="ln">126  </span></a>     * </span><span class="s4">@param </span><span class="s3">weatherData The new weather data to be displayed. 
+<a name="l127"><span class="ln">127  </span></a>     */</span><span class="s1"> 
+<a name="l128"><span class="ln">128  </span></a>    </span><span class="s2">public void </span><span class="s1">setWeatherData(String[] weatherData) { 
+<a name="l129"><span class="ln">129  </span></a>        mWeatherData = weatherData</span><span class="s2">;</span><span class="s1"> 
+<a name="l130"><span class="ln">130  </span></a>        notifyDataSetChanged()</span><span class="s2">;</span><span class="s1"> 
+<a name="l131"><span class="ln">131  </span></a>    } 
+<a name="l132"><span class="ln">132  </span></a>}</span></pre>
+</body>
+</html>

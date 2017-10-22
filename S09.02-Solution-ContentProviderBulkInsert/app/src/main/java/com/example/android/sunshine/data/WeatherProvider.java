@@ -125,6 +125,7 @@ public class WeatherProvider extends ContentProvider {
         return true;
     }
 
+
 //  COMPLETED (1) Implement the bulkInsert method
     /**
      * Handles requests to insert a set of new rows. In Sunshine, we are only going to be
